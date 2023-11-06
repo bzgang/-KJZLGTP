@@ -31,10 +31,10 @@ namespace KJGZP_SJTP
         {
             InitializeComponent();
             GetScreen();
-            LoadImages("春", pictureBoxSpring);
-            LoadImages("夏", pictureBoxSummer);
-            LoadImages("秋", pictureBoxAutumn);
-            LoadImages("冬", pictureBoxWinter);
+            //LoadImages("春", pictureBoxSpring);
+            //LoadImages("夏", pictureBoxSummer);
+            //LoadImages("秋", pictureBoxAutumn);
+            //LoadImages("冬", pictureBoxWinter);
         }
         private void btnDecryptKey_Click(object sender, EventArgs e)
         {
@@ -80,6 +80,7 @@ namespace KJGZP_SJTP
         /// <param name="e"></param>
         private void btnScreenSpring_Click(object sender, EventArgs e)
         {
+            LoadImages("春", pictureBoxSpring);
             WhitchSeasonToScreen("春", pictureBoxSpring);
         }
         /// <summary>
@@ -89,6 +90,7 @@ namespace KJGZP_SJTP
         /// <param name="e"></param>
         private void btnScreenSummer_Click(object sender, EventArgs e)
         {
+            LoadImages("夏", pictureBoxSummer);
             WhitchSeasonToScreen("夏", pictureBoxSummer);
         }
         /// <summary>
@@ -98,6 +100,7 @@ namespace KJGZP_SJTP
         /// <param name="e"></param>
         private void btnScreenAutumn_Click(object sender, EventArgs e)
         {
+            LoadImages("秋", pictureBoxAutumn);
             WhitchSeasonToScreen("秋", pictureBoxAutumn);
         }
         /// <summary>
@@ -107,6 +110,7 @@ namespace KJGZP_SJTP
         /// <param name="e"></param>
         private void btnScreenWinter_Click(object sender, EventArgs e)
         {
+            LoadImages("冬", pictureBoxWinter);
             WhitchSeasonToScreen("冬", pictureBoxWinter);
         }
         /// <summary>

@@ -1,0 +1,10 @@
+C:\项目\KJGZPWinFrom\KJGZP-SJTP\bin\Release\KJGZP-SJTP.exe.config
+C:\项目\KJGZPWinFrom\KJGZP-SJTP\bin\Release\KJGZP-SJTP.exe
+C:\项目\KJGZPWinFrom\KJGZP-SJTP\bin\Release\KJGZP-SJTP.pdb
+C:\项目\KJGZPWinFrom\KJGZP-SJTP\obj\Release\KJGZP_SJTP.StartScreen.resources
+C:\项目\KJGZPWinFrom\KJGZP-SJTP\obj\Release\KJGZP_SJTP.Properties.Resources.resources
+C:\项目\KJGZPWinFrom\KJGZP-SJTP\obj\Release\KJGZP-SJTP.csproj.GenerateResource.cache
+C:\项目\KJGZPWinFrom\KJGZP-SJTP\obj\Release\KJGZP-SJTP.csproj.CoreCompileInputs.cache
+C:\项目\KJGZPWinFrom\KJGZP-SJTP\obj\Release\KJGZP-SJTP.exe
+C:\项目\KJGZPWinFrom\KJGZP-SJTP\obj\Release\KJGZP-SJTP.pdb
+C:\项目\KJGZPWinFrom\KJGZP-SJTP\obj\Release\KJGZP-SJTP.csproj.AssemblyReference.cache
