@@ -1,0 +1,252 @@
+﻿<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>index</title>
+    <link rel="stylesheet" type="text/css" href="./Css/common.css" />
+    <link rel="stylesheet" type="text/css" href="./Css/index.css" />
+    <style>
+        body {
+            padding: 12px;
+            background: rgb(0 0 0 / 0.00);
+            overflow-y: hidden;
+            overflow-x: hidden;
+        }
+
+        .group_1 {
+            box-shadow: 0px 16px 50px 0px rgba(24, 26, 29, 0.5);
+            background-image: url(https://lanhu-dds-backend.oss-cn-beijing.aliyuncs.com/merge_image/imgs/6df1470eee20463b81e70ef0ffc7a6b7_mergeImage.png);
+            width: 900px;
+            height: 506px;
+            border: 8px solid rgba(230, 230, 230, 1);
+            margin: 79px 0 0 -53px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page flex-col">
+        <video controls autoplay style="display:none; width:100%;height:100%;" id="videoPlay"></video>
+        <div class="block_2 flex-row justify-between" style=" position: fixed; margin: 1680px 0px 0px 950px" id="divEnd">
+            <!-- winfrom中显示的化配置为margin: -240px 0px 0px 950px -->
+            <div class="image-text_3 flex-col justify-between">
+                <img class="image_15"
+                     referrerpolicy="no-referrer"
+                     src="./Images/Common/end.png" />
+                <span class="text-group_4">停止</span>
+            </div>
+        </div>
+        <div class="box_1 flex-col" id="divMain" title="背景">
+            <div class="image-wrapper_6 flex-col" title="太阳" id="divSun">
+            </div>
+            <img class="image_11"
+                 referrerpolicy="no-referrer"
+                 src="./Images/Common/云2.png" title="云2" id="imgCloud1" />
+            <img class="image_12"
+                 referrerpolicy="no-referrer"
+                 src="./Images/Common/云3.png" title="云3" id="imgCloud2" />
+
+            <div class="section_2 flex-col" title="土壤" id="divTr">
+
+
+                <div class="group_7 flex-col" title="植物" id="divZw">
+                    <div class="image-wrapper_7 flex-row">
+                    </div>
+                    <div class="image-wrapper_8 flex-row">
+                        <img class="image_7"
+                             referrerpolicy="no-referrer"
+                             src="./Images/Common/zsd-y.png" />
+                    </div>
+                    <div class="section_1 flex-col">
+                        <div class="text-wrapper_4 flex-col" id="divLeaf">
+                            <span class="text_4">叶</span>
+                        </div>
+                    </div>
+                    <div class="section_3 flex-row">
+                        <img class="image_8"
+                             referrerpolicy="no-referrer"
+                             src="./Images/Common/zsd-j.png" />
+                        <div class="group_8 flex-col">
+                            <div class="text-wrapper_6 flex-col" id="divStem">
+                                <span class="text_6">茎</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group_5 flex-row">
+                        <div class="block_1 flex-col">
+                            <div class="text-wrapper_5 flex-col" id="divRoot">
+                                <span class="text_5">根</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-wrapper_9 flex-row">
+                        <img class="image_9"
+                             referrerpolicy="no-referrer"
+                             src="./Images/Common/zsd-g.png" />
+                    </div>
+                </div>
+                <!--弹出窗体，播放动画-->
+                <div id="divShowDemo" class="group_6 flex-col" style="background-color: antiquewhite; width: 80%; height: 500px; position: absolute; margin: -170px 0 0 100px; display:none;">
+                    <video controls autoplay style="width: 100%; height: 100%; display: none;" id="videoPlayDemo"></video>
+                    <div style=" position: fixed; margin: -400px 0 0 2px;display:none;" id="divWinfrom"><img class="image_15" id="closeDemoWinfrom" referrerpolicy="no-referrer" style="margin:-470px 0 0 770px;" src="./Images/Common/icon_Shut.png" /></div>
+                    <div style=" position: fixed; margin: 0px 0 0 0px; display: none;" id="divClose"><img class="image_15" id="closeDemo" referrerpolicy="no-referrer" style="margin:-470px 0 0 770px;" src="./Images/Common/icon_Shut.png" /></div>
+                </div>
+
+                <div class="group_6 flex-row" style="width: 10%; height: 170px; position: absolute; margin: 430px 0 0 950px;" id="divShow"></div>
+
+                <div class="group_6 flex-row" id="divBf">
+                    <div class="block_2 flex-row justify-between">
+                        <div class="image-text_3 flex-col justify-between" id="divPlay">
+                            <img class="image_15" id="imgPlay"
+                                 referrerpolicy="no-referrer"
+                                 src="./Images/Common/start.png" />
+                            <span class="text-group_4" id="spanPlay">播放</span>
+                        </div>
+                        <!--<div class="image-text_4 flex-col justify-between">
+                            <img class="image_15"
+                                 referrerpolicy="no-referrer"
+                                 src="./Images/Common/end.png" />
+                            <span class="text-group_4">停止</span>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<script>
+    function hideOrShowBgDiv(hideOrShow) {
+        document.getElementById("divZw").style.display = hideOrShow;//植物
+        document.getElementById("divBf").style.display = hideOrShow;//播放按钮
+        document.getElementById("divEnd").style.display = hideOrShow;//停止
+        document.getElementById("divSun").style.display = hideOrShow;//太阳
+        document.getElementById("imgCloud1").style.display = hideOrShow;//云
+        document.getElementById("imgCloud2").style.display = hideOrShow;//云
+        if (hideOrShow == "none") {
+            document.getElementById("divTr").style.backgroundImage = "url('')";//土壤
+            document.getElementById("divMain").style.backgroundImage = "url('')";//主背景
+        }
+        else {
+            document.getElementById("divTr").style.backgroundImage = "url('../Images/Common/tr.png')";//土壤
+            document.getElementById("divMain").style.backgroundImage = "url('../Images/Common/bg.png')";//主背景
+        }
+    }
+    //根、茎、叶 按钮操作播放讲解视频
+    var divLeaf = document.getElementById("divLeaf"); //叶
+    var divRoot = document.getElementById("divRoot"); //根
+    var divStem = document.getElementById("divStem"); //茎
+    var videoDemo = document.getElementById("videoPlayDemo"); //播放视频控件
+    var closeDemo = document.getElementById("closeDemo"); //关闭演示
+    var closeDemoWinfrom = document.getElementById("closeDemoWinfrom"); //关闭演示
+    divLeaf.onclick = function () {
+        document.getElementById("divShowDemo").style.display = "block";//隐藏
+        videoDemo.style.display = "block";
+        videoDemo.src = './Images/Common/1-演示稿叶.mp4';
+    }
+    divStem.onclick = function () {
+        document.getElementById("divShowDemo").style.display = "block";//隐藏
+        videoDemo.style.display = "block";
+        videoDemo.src = './Images/Common/2-演示稿茎.mp4';
+    }
+    divRoot.onclick = function () {
+        //  hideOrShowBgDiv("none");
+        document.getElementById("divShowDemo").style.display = "block";//隐藏
+        videoDemo.style.display = "block";
+        videoDemo.src = './Images/Common/3-演示稿根.mp4';
+    } 
+    closeDemo.onclick = function () {
+        // hideOrShowBgDiv("block");
+        document.getElementById("divShowDemo").style.display = "none";//隐藏
+        videoDemo.style.display = "none";
+        videoDemo.src = '';
+    }
+    closeDemoWinfrom.onclick = function () {
+        // hideOrShowBgDiv("block");
+        document.getElementById("divShowDemo").style.display = "none";//隐藏
+        videoDemo.style.display = "none";
+        videoDemo.src = '';
+    }
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+    //根据页面参数，调整按钮布局
+    window.onload = function () {
+        var winfromStr = GetQueryString("winfrom");
+        if (winfromStr == "true") {
+            document.getElementById("divEnd").style.margin = "-240px 0px 0px 950px";
+            document.getElementById("divClose").style.display = "none";
+            document.getElementById("divWinfrom").style.display = "block";
+        }
+        else {
+            document.getElementById("divClose").style.display = "block";
+            document.getElementById("divWinfrom").style.display = "none";
+        }
+
+    }
+
+    const video = document.getElementById("videoPlay");//document.querySelector('video');
+    var isPlay = false;
+    var divPaly = document.getElementById("divPlay");
+    var divShow = document.getElementById("divShow");
+    divShow.onclick = function () {
+        // alert(1)
+        isPlay = !isPlay;
+        document.getElementById("divMain").style.display = "none";//隐藏
+        video.style.display = "block";
+        video.src = './Images/Common/光合作用.mp4';
+        LoopMp4();
+    }
+    divPaly.onclick = function () {
+        isPlay = !isPlay;
+        //  alert(isPlay)
+        //if (isPlay) {
+        //    document.getElementById("spanPlay").innerText = "停止"
+        //    document.getElementById("imgPlay").src = "./Images/Common/end.png"
+
+        document.getElementById("divMain").style.display = "none";//隐藏
+        video.style.display = "block";
+        video.src = './Images/Common/光合作用.mp4';
+        LoopMp4();
+        //}
+        //else {
+        //    document.getElementById("spanPlay").innerText = "播放"
+        //    document.getElementById("imgPlay").src = "./Images/Common/start.png"
+        //}
+    }
+    var divEnd = document.getElementById("divEnd");
+    divEnd.onclick = function () {
+        isPlay = !isPlay;
+        document.getElementById("divMain").style.display = "block";//隐藏
+        video.style.display = "none";
+        video.src = '';
+    }
+
+    var timerCount = 0;  //设置循环几次后自动退出
+    var timer = null //要设置定时器首先得有开关
+    var timerDate = 60000;
+    // 开始执行叶片定时器
+    function LoopMp4() {
+        //获取视频时长，进行循环播放
+        video.addEventListener("loadeddata", function () {
+            var duration = video.duration;
+            timerDate = duration * 1000 + 2000; //获取视频的时长，配置循环播放间隔，确保每次循环能完整播放视频
+            // alert(timerDate)
+            clearInterval(timer) //在每次使用定时器前先清除一下定时器
+            timer = setInterval(function () {
+                timerCount++;
+                if (timerCount > 2) {
+                    document.getElementById("divMain").style.display = "block";//隐藏
+                    video.style.display = "none";
+                    video.src = '';
+                }
+                //var divLeaf = document.getElementById("divLeaf");
+                video.src = './Images/Common/光合作用.mp4';
+            }, timerDate)//设置定时时间
+        })
+    }
+</script>

@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BFC6ECCA-C799-44D9-B0FD-055E772FB23D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>KJGZP_SJTP</RootNamespace>
+    <AssemblyName>KJGZP-SJTP</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CryptKeyHelper.cs" />
+    <Compile Include="SenderImgScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SenderImgScreen.Designer.cs">
+      <DependentUpon>SenderImgScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="SenderImgScreen.resx">
+      <DependentUpon>SenderImgScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\冬\冬01.jpg" />
+    <Content Include="Images\冬\冬02.jpg" />
+    <Content Include="Images\冬\冬03.jpg" />
+    <Content Include="Images\冬\冬04.jpg" />
+    <Content Include="Images\冬\冬05.jpg" />
+    <Content Include="Images\冬\冬06.jpg" />
+    <Content Include="Images\冬\冬07.jpg" />
+    <Content Include="Images\冬\冬08.jpg" />
+    <Content Include="Images\冬\冬09.jpg" />
+    <Content Include="Images\冬\冬10.jpg" />
+    <Content Include="Images\冬\冬11.jpg" />
+    <Content Include="Images\冬\冬12.jpg" />
+    <Content Include="Images\冬\冬13.jpg" />
+    <Content Include="Images\冬\冬14.jpg" />
+    <Content Include="Images\冬\冬15.jpg" />
+    <Content Include="Images\夏\夏01.jpg" />
+    <Content Include="Images\夏\夏02.jpg" />
+    <Content Include="Images\夏\夏03.jpg" />
+    <Content Include="Images\夏\夏04.jpg" />
+    <Content Include="Images\夏\夏05.jpg" />
+    <Content Include="Images\夏\夏06.jpg" />
+    <Content Include="Images\夏\夏07.jpg" />
+    <Content Include="Images\夏\夏08.jpg" />
+    <Content Include="Images\夏\夏09.jpg" />
+    <Content Include="Images\夏\夏10.jpg" />
+    <Content Include="Images\夏\夏11.jpg" />
+    <Content Include="Images\夏\夏12.jpg" />
+    <Content Include="Images\夏\夏13.jpg" />
+    <Content Include="Images\夏\夏14.jpg" />
+    <Content Include="Images\夏\夏15.jpg" />
+    <Content Include="Images\夏\夏16.jpg" />
+    <Content Include="Images\夏\夏17.jpg" />
+    <Content Include="Images\夏\夏18.jpg" />
+    <Content Include="Images\夏\夏19.jpg" />
+    <Content Include="Images\春\春01.jpg" />
+    <Content Include="Images\春\春02.jpg" />
+    <Content Include="Images\春\春03.jpg" />
+    <Content Include="Images\春\春04.jpg" />
+    <Content Include="Images\春\春05.jpg" />
+    <Content Include="Images\春\春06.jpg" />
+    <Content Include="Images\春\春07.jpg" />
+    <Content Include="Images\春\春08.jpg" />
+    <Content Include="Images\春\春09.jpg" />
+    <Content Include="Images\秋\秋01.jpg" />
+    <Content Include="Images\秋\秋02.jpg" />
+    <Content Include="Images\秋\秋03.jpg" />
+    <Content Include="Images\秋\秋04.jpg" />
+    <Content Include="Images\秋\秋05.jpg" />
+    <Content Include="Images\秋\秋06.jpg" />
+    <Content Include="Images\秋\秋07.jpg" />
+    <Content Include="Images\秋\秋08.jpg" />
+    <Content Include="Images\秋\秋09.jpg" />
+    <Content Include="Images\秋\秋10.jpg" />
+    <Content Include="Images\秋\秋11.jpg" />
+    <Content Include="Images\秋\秋12.jpg" />
+    <Content Include="Images\秋\秋13.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,8 @@
+C:\项目\KJGZP\KJGZP\bin\Debug\KJGZP.exe
+C:\项目\KJGZP\KJGZP\bin\Debug\KJGZP.pdb
+C:\项目\KJGZP\KJGZP\obj\Debug\KJGZP.SetKeyFrom.resources
+C:\项目\KJGZP\KJGZP\obj\Debug\KJGZP.Properties.Resources.resources
+C:\项目\KJGZP\KJGZP\obj\Debug\KJGZP-SetKey.csproj.GenerateResource.cache
+C:\项目\KJGZP\KJGZP\obj\Debug\KJGZP-SetKey.csproj.CoreCompileInputs.cache
+C:\项目\KJGZP\KJGZP\obj\Debug\KJGZP.exe
+C:\项目\KJGZP\KJGZP\obj\Debug\KJGZP.pdb
