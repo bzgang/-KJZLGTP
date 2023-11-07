@@ -167,9 +167,11 @@ namespace KJZP_GHZY
             this.Controls.Add(this.label4);
             this.Controls.Add(this.webBrowser1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "photosynthesis";
             this.Text = "光合作用";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.photosynthesis_KeyPress);
             this.Resize += new System.EventHandler(this.photosynthesis_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();

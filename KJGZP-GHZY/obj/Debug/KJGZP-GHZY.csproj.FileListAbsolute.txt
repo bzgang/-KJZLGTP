@@ -2,6 +2,7 @@ C:\项目\KJGZPWinFrom\KJGZP-GHZY\bin\Debug\KJZP-GHZY.exe.config
 C:\项目\KJGZPWinFrom\KJGZP-GHZY\bin\Debug\KJZP-GHZY.exe
 C:\项目\KJGZPWinFrom\KJGZP-GHZY\bin\Debug\KJZP-GHZY.pdb
 C:\项目\KJGZPWinFrom\KJGZP-GHZY\bin\Debug\WebBrowserUtils.dll
+C:\项目\KJGZPWinFrom\KJGZP-GHZY\obj\Debug\KJGZP-GHZY.csproj.AssemblyReference.cache
 C:\项目\KJGZPWinFrom\KJGZP-GHZY\obj\Debug\KJZP_GHZY.photosynthesis.resources
 C:\项目\KJGZPWinFrom\KJGZP-GHZY\obj\Debug\KJZP_GHZY.Properties.Resources.resources
 C:\项目\KJGZPWinFrom\KJGZP-GHZY\obj\Debug\KJGZP-GHZY.csproj.GenerateResource.cache

@@ -17,6 +17,7 @@ C:\项目\KJGZPApp\KJGZP-SJTP\obj\Debug\KJGZP-SJTP.pdb
 C:\项目\KJGZPWinFrom\KJGZP-SJTP\bin\Debug\KJGZP-SJTP.exe.config
 C:\项目\KJGZPWinFrom\KJGZP-SJTP\bin\Debug\KJGZP-SJTP.exe
 C:\项目\KJGZPWinFrom\KJGZP-SJTP\bin\Debug\KJGZP-SJTP.pdb
+C:\项目\KJGZPWinFrom\KJGZP-SJTP\obj\Debug\KJGZP-SJTP.csproj.AssemblyReference.cache
 C:\项目\KJGZPWinFrom\KJGZP-SJTP\obj\Debug\KJGZP_SJTP.StartScreen.resources
 C:\项目\KJGZPWinFrom\KJGZP-SJTP\obj\Debug\KJGZP_SJTP.Properties.Resources.resources
 C:\项目\KJGZPWinFrom\KJGZP-SJTP\obj\Debug\KJGZP-SJTP.csproj.GenerateResource.cache

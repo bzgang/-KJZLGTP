@@ -86,10 +86,11 @@
                     </div>
                 </div>
                 <!--弹出窗体，播放动画-->
-                <div id="divShowDemo" class="group_6 flex-col" style="background-color: antiquewhite; width: 80%; height: 500px; position: absolute; margin: -170px 0 0 100px; display:none;">
-                    <video controls autoplay style="width: 100%; height: 100%; display: none;" id="videoPlayDemo"></video>
-                    <div style=" position: fixed; margin: -400px 0 0 2px;display:none;" id="divWinfrom"><img class="image_15" id="closeDemoWinfrom" referrerpolicy="no-referrer" style="margin:-470px 0 0 770px;" src="./Images/Common/icon_Shut.png" /></div>
-                    <div style=" position: fixed; margin: 0px 0 0 0px; display: none;" id="divClose"><img class="image_15" id="closeDemo" referrerpolicy="no-referrer" style="margin:-470px 0 0 770px;" src="./Images/Common/icon_Shut.png" /></div>
+                <div id="divShowDemo" class="group_6 flex-col"
+                     style="background-color: lightgreen; width: 80%; height: 500px; position: absolute; margin: -170px 0 0 100px; border-radius: 50px; border: 8px solid rgba(230, 230, 230, 1); display: none; ">
+                    <video controls autoplay style="width: 100%; height: 100%; border-radius: 50px; display: none;" id="videoPlayDemo"></video>
+                    <div style=" position: fixed; margin: -400px 0 0 2px;display:none;" id="divWinfrom"><img class="image_15" id="closeDemoWinfrom" referrerpolicy="no-referrer" style="margin:460px 0 0 350px;" src="./Images/Common/icon_Shut.png" /></div>
+                    <div style=" position: fixed; margin: 0px 0 0 0px; display: none;" id="divClose"><img class="image_15" id="closeDemo" referrerpolicy="no-referrer" style="margin: 90px 0 0 350px;" src="./Images/Common/icon_Shut.png" /></div>
                 </div>
 
                 <div class="group_6 flex-row" style="width: 10%; height: 170px; position: absolute; margin: 430px 0 0 950px;" id="divShow"></div>
@@ -144,19 +145,22 @@
     divLeaf.onclick = function () {
         document.getElementById("divShowDemo").style.display = "block";//隐藏
         videoDemo.style.display = "block";
-        videoDemo.src = './Images/Common/1-演示稿叶.mp4';
+        videoDemo.src = './Images/Common/叶.mp4';
+        videoDemo.controls = false; //隐藏底部播放进度条及按钮
     }
     divStem.onclick = function () {
         document.getElementById("divShowDemo").style.display = "block";//隐藏
         videoDemo.style.display = "block";
-        videoDemo.src = './Images/Common/2-演示稿茎.mp4';
+        videoDemo.src = './Images/Common/茎.mp4';
+        videoDemo.controls = false; //隐藏底部播放进度条及按钮
     }
     divRoot.onclick = function () {
         //  hideOrShowBgDiv("none");
         document.getElementById("divShowDemo").style.display = "block";//隐藏
         videoDemo.style.display = "block";
-        videoDemo.src = './Images/Common/3-演示稿根.mp4';
-    } 
+        videoDemo.src = './Images/Common/根.mp4';
+        videoDemo.controls = false; //隐藏底部播放进度条及按钮
+    }
     closeDemo.onclick = function () {
         // hideOrShowBgDiv("block");
         document.getElementById("divShowDemo").style.display = "none";//隐藏
@@ -199,6 +203,7 @@
         document.getElementById("divMain").style.display = "none";//隐藏
         video.style.display = "block";
         video.src = './Images/Common/光合作用.mp4';
+        video.controls = false;  //隐藏video底部进度条及按钮
         LoopMp4();
     }
     divPaly.onclick = function () {
@@ -211,7 +216,10 @@
         document.getElementById("divMain").style.display = "none";//隐藏
         video.style.display = "block";
         video.src = './Images/Common/光合作用.mp4';
+        video.controls = false;  //隐藏video底部进度条及按钮
         LoopMp4();
+
+
         //}
         //else {
         //    document.getElementById("spanPlay").innerText = "播放"

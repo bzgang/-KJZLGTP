@@ -47,7 +47,15 @@ namespace KJGZP_SJTP
             this.btnDecryptKey = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label3 = new System.Windows.Forms.Label();
+            this.pictureBoxShowSpring = new System.Windows.Forms.PictureBox();
+            this.pictureBoxShowSummer = new System.Windows.Forms.PictureBox();
+            this.pictureBoxShowAutumn = new System.Windows.Forms.PictureBox();
+            this.pictureBoxShowWinter = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowSpring)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowSummer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowAutumn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowWinter)).BeginInit();
             this.SuspendLayout();
             // 
             // numericUpDown1
@@ -108,7 +116,7 @@ namespace KJGZP_SJTP
             // 
             // btnScreenSpring
             // 
-            this.btnScreenSpring.Location = new System.Drawing.Point(52, 383);
+            this.btnScreenSpring.Location = new System.Drawing.Point(41, 383);
             this.btnScreenSpring.Margin = new System.Windows.Forms.Padding(4);
             this.btnScreenSpring.Name = "btnScreenSpring";
             this.btnScreenSpring.Size = new System.Drawing.Size(100, 28);
@@ -119,7 +127,7 @@ namespace KJGZP_SJTP
             // 
             // btnScreenSummer
             // 
-            this.btnScreenSummer.Location = new System.Drawing.Point(188, 383);
+            this.btnScreenSummer.Location = new System.Drawing.Point(265, 383);
             this.btnScreenSummer.Margin = new System.Windows.Forms.Padding(4);
             this.btnScreenSummer.Name = "btnScreenSummer";
             this.btnScreenSummer.Size = new System.Drawing.Size(100, 28);
@@ -130,7 +138,7 @@ namespace KJGZP_SJTP
             // 
             // btnScreenAutumn
             // 
-            this.btnScreenAutumn.Location = new System.Drawing.Point(52, 454);
+            this.btnScreenAutumn.Location = new System.Drawing.Point(41, 454);
             this.btnScreenAutumn.Margin = new System.Windows.Forms.Padding(4);
             this.btnScreenAutumn.Name = "btnScreenAutumn";
             this.btnScreenAutumn.Size = new System.Drawing.Size(100, 28);
@@ -141,7 +149,7 @@ namespace KJGZP_SJTP
             // 
             // btnScreenWinter
             // 
-            this.btnScreenWinter.Location = new System.Drawing.Point(188, 454);
+            this.btnScreenWinter.Location = new System.Drawing.Point(265, 454);
             this.btnScreenWinter.Margin = new System.Windows.Forms.Padding(4);
             this.btnScreenWinter.Name = "btnScreenWinter";
             this.btnScreenWinter.Size = new System.Drawing.Size(100, 28);
@@ -207,6 +215,38 @@ namespace KJGZP_SJTP
             this.label3.TabIndex = 17;
             this.label3.Text = "投屏屏幕：";
             // 
+            // pictureBoxShowSpring
+            // 
+            this.pictureBoxShowSpring.Location = new System.Drawing.Point(148, 363);
+            this.pictureBoxShowSpring.Name = "pictureBoxShowSpring";
+            this.pictureBoxShowSpring.Size = new System.Drawing.Size(108, 66);
+            this.pictureBoxShowSpring.TabIndex = 18;
+            this.pictureBoxShowSpring.TabStop = false;
+            // 
+            // pictureBoxShowSummer
+            // 
+            this.pictureBoxShowSummer.Location = new System.Drawing.Point(372, 363);
+            this.pictureBoxShowSummer.Name = "pictureBoxShowSummer";
+            this.pictureBoxShowSummer.Size = new System.Drawing.Size(108, 66);
+            this.pictureBoxShowSummer.TabIndex = 18;
+            this.pictureBoxShowSummer.TabStop = false;
+            // 
+            // pictureBoxShowAutumn
+            // 
+            this.pictureBoxShowAutumn.Location = new System.Drawing.Point(148, 435);
+            this.pictureBoxShowAutumn.Name = "pictureBoxShowAutumn";
+            this.pictureBoxShowAutumn.Size = new System.Drawing.Size(108, 66);
+            this.pictureBoxShowAutumn.TabIndex = 18;
+            this.pictureBoxShowAutumn.TabStop = false;
+            // 
+            // pictureBoxShowWinter
+            // 
+            this.pictureBoxShowWinter.Location = new System.Drawing.Point(372, 435);
+            this.pictureBoxShowWinter.Name = "pictureBoxShowWinter";
+            this.pictureBoxShowWinter.Size = new System.Drawing.Size(108, 66);
+            this.pictureBoxShowWinter.TabIndex = 18;
+            this.pictureBoxShowWinter.TabStop = false;
+            // 
             // StartScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -227,11 +267,19 @@ namespace KJGZP_SJTP
             this.Controls.Add(this.btnScreenSummer);
             this.Controls.Add(this.btnScreenSpring);
             this.Controls.Add(this.StartStopButton);
+            this.Controls.Add(this.pictureBoxShowWinter);
+            this.Controls.Add(this.pictureBoxShowAutumn);
+            this.Controls.Add(this.pictureBoxShowSummer);
+            this.Controls.Add(this.pictureBoxShowSpring);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "StartScreen";
             this.Text = "四季图片投屏";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowSpring)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowSummer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowAutumn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowWinter)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -255,6 +303,10 @@ namespace KJGZP_SJTP
         private System.Windows.Forms.Button btnDecryptKey;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBoxShowSpring;
+        private System.Windows.Forms.PictureBox pictureBoxShowSummer;
+        private System.Windows.Forms.PictureBox pictureBoxShowAutumn;
+        private System.Windows.Forms.PictureBox pictureBoxShowWinter;
     }
 }
 
