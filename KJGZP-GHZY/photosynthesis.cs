@@ -24,8 +24,7 @@ namespace KJZP_GHZY
             try
             {
                 //string webBrowserUrl = ConfigurationManager.ConnectionStrings["webBrowserUrl"].ConnectionString; //txtUrl.Text;// "";
-                //webBrowser1.Navigate(webBrowserUrl + "?winfrom=true");
-
+                //webBrowser1.Navigate(webBrowserUrl + "?winfrom=true"); 
             }
             catch (Exception)
             {
@@ -61,7 +60,6 @@ namespace KJZP_GHZY
             }
             foreach (Screen screen in selectedScreens)
             {
-
                 screenForm.FormBorderStyle = FormBorderStyle.None;
                 screenForm.WindowState = FormWindowState.Maximized;
                 screenForm.StartPosition = FormStartPosition.Manual;
@@ -126,8 +124,12 @@ namespace KJZP_GHZY
             try
             {
                 string decryptKey = cryptHelper.Decrypt(this.textBoxKey.Text, "bzg");
-
                 this.lblDecryptVal.Text = decryptKey;
+                if (Convert.ToDateTime(decryptKey) < DateTime.Now)
+                {
+                    MessageBox.Show("密钥已失效,请确认.", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 SaveKey();
             }
             catch (Exception ex)
@@ -197,6 +199,11 @@ namespace KJZP_GHZY
             try
             {
                 string decryptKey = cryptHelper.Decrypt(this.textBoxKey.Text, "bzg");
+                if (Convert.ToDateTime(decryptKey) < DateTime.Now)
+                {
+                    MessageBox.Show("密钥已失效,请确认.", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return "";
+                }
                 SaveKey();
                 return decryptKey;
             }
@@ -226,6 +233,7 @@ namespace KJZP_GHZY
             TimeSpan ts = dateTime.Subtract(DateTime.Now);
             if (ts.Days <= 0 && ts.Hours <= 0 && ts.Minutes <= 0 && ts.Seconds <= 0)
             {
+                MessageBox.Show("密钥已失效,投屏结束.", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 StopScreenSharing();
                 return;
             }
@@ -235,11 +243,19 @@ namespace KJZP_GHZY
         /// </summary>
         private void StopScreenSharing()
         {
-            // 关闭所有投屏窗口
-            foreach (Form form in Application.OpenForms)
+            try
             {
-                webBrowser1.Dispose();
-                form.Close();
+
+                // 关闭所有投屏窗口
+                foreach (Form form in Application.OpenForms)
+                {
+                    webBrowser1.Dispose();
+                    form.Close();
+                }
+            }
+            catch (Exception)
+            {
+
             }
         }
 

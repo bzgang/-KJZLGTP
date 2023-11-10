@@ -50,7 +50,11 @@ namespace KJGZP_SJTP
                 string decryptKey = cryptHelper.Decrypt(this.textBoxKey.Text, "bzg");
 
                 this.lblDecryptVal.Text = decryptKey;
-
+                if (Convert.ToDateTime(decryptKey) < DateTime.Now)
+                {
+                    MessageBox.Show("密钥已失效,请确认.", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 SaveKey();
             }
             catch (Exception ex)
@@ -216,6 +220,11 @@ namespace KJGZP_SJTP
             try
             {
                 string decryptKey = cryptHelper.Decrypt(this.textBoxKey.Text, "bzg");
+                if (Convert.ToDateTime(decryptKey) < DateTime.Now)
+                {
+                    MessageBox.Show("密钥已失效,请确认.", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return "";
+                }
                 SaveKey();
                 return decryptKey;
             }
@@ -423,6 +432,7 @@ namespace KJGZP_SJTP
             TimeSpan ts = dateTime.Subtract(DateTime.Now);
             if (ts.Days <= 0 && ts.Hours <= 0 && ts.Minutes <= 0 && ts.Seconds <= 0)
             {
+                MessageBox.Show("密钥已失效,投屏结束.", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 StopScreenSharing();
                 return;
             }
@@ -476,9 +486,16 @@ namespace KJGZP_SJTP
             isRunning = false;
             StartStopButton.Text = "开始循环";
             // 关闭所有投屏窗口
-            foreach (Form form in Application.OpenForms)
+            try
             {
-                form.Close();
+                foreach (Form form in Application.OpenForms)
+                {
+                    form.Close();
+                }
+            }
+            catch (Exception)
+            {
+
             }
         }
 

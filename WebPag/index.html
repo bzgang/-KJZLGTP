@@ -103,12 +103,6 @@
                                  src="./Images/Common/start.png" />
                             <span class="text-group_4" id="spanPlay">播放</span>
                         </div>
-                        <!--<div class="image-text_4 flex-col justify-between">
-                            <img class="image_15"
-                                 referrerpolicy="no-referrer"
-                                 src="./Images/Common/end.png" />
-                            <span class="text-group_4">停止</span>
-                        </div>-->
                     </div>
                 </div>
             </div>
@@ -119,6 +113,7 @@
 
 
 <script>
+    //设置播放演示视频时，显示和隐藏的背景图标  --未使用
     function hideOrShowBgDiv(hideOrShow) {
         document.getElementById("divZw").style.display = hideOrShow;//植物
         document.getElementById("divBf").style.display = hideOrShow;//播放按钮
@@ -142,36 +137,45 @@
     var videoDemo = document.getElementById("videoPlayDemo"); //播放视频控件
     var closeDemo = document.getElementById("closeDemo"); //关闭演示
     var closeDemoWinfrom = document.getElementById("closeDemoWinfrom"); //关闭演示
-    divLeaf.onclick = function () {
-        document.getElementById("divShowDemo").style.display = "block";//隐藏
-        videoDemo.style.display = "block";
-        videoDemo.src = './Images/Common/叶.mp4';
-        videoDemo.controls = false; //隐藏底部播放进度条及按钮
+
+    //延迟显示MP4，根据判断显示不同演示视频
+    function showDiv(season) {
+        if (season == "Leaf") {
+            videoDemo.src = './Images/Common/叶.mp4';
+        }
+        else if (season == "Stem") {
+            videoDemo.src = './Images/Common/茎.mp4';
+        } else if (season == "Root") {
+            videoDemo.src = './Images/Common/根.mp4';
+        }
+        setTimeout(function () {
+            document.getElementById("divShowDemo").style.display = "block";//隐藏
+            videoDemo.style.display = "block";
+            videoDemo.controls = false; //隐藏底部播放进度条及按钮
+        }, 150)
+        setDivDisable("none");
     }
-    divStem.onclick = function () {
-        document.getElementById("divShowDemo").style.display = "block";//隐藏
-        videoDemo.style.display = "block";
-        videoDemo.src = './Images/Common/茎.mp4';
-        videoDemo.controls = false; //隐藏底部播放进度条及按钮
+    //弹出演示视频后，设置按钮不可用，关闭后，回复可点击
+    function setDivDisable(disable) {
+        divLeaf.style.pointerEvents = disable;
+        divStem.style.pointerEvents = disable;
+        divRoot.style.pointerEvents = disable;
     }
-    divRoot.onclick = function () {
-        //  hideOrShowBgDiv("none");
-        document.getElementById("divShowDemo").style.display = "block";//隐藏
-        videoDemo.style.display = "block";
-        videoDemo.src = './Images/Common/根.mp4';
-        videoDemo.controls = false; //隐藏底部播放进度条及按钮
-    }
+    divLeaf.onclick = function () { showDiv("Leaf") };//叶
+    divStem.onclick = function () { showDiv("Stem") }//茎
+    divRoot.onclick = function () { showDiv("Root") }//根
+
     closeDemo.onclick = function () {
-        // hideOrShowBgDiv("block");
         document.getElementById("divShowDemo").style.display = "none";//隐藏
         videoDemo.style.display = "none";
         videoDemo.src = '';
+        setDivDisable("");
     }
     closeDemoWinfrom.onclick = function () {
-        // hideOrShowBgDiv("block");
         document.getElementById("divShowDemo").style.display = "none";//隐藏
         videoDemo.style.display = "none";
         videoDemo.src = '';
+        setDivDisable("");
     }
     function GetQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -193,38 +197,28 @@
 
     }
 
+    //延迟显示MP4
+    function showDivGHZY() {
+        video.src = './Images/Common/光合作用.mp4';
+        setTimeout(function () {
+            document.getElementById("divMain").style.display = "none";//隐藏
+            video.style.display = "block";
+            video.controls = false;  //隐藏video底部进度条及按钮
+        }, 150)
+    }
     const video = document.getElementById("videoPlay");//document.querySelector('video');
     var isPlay = false;
     var divPaly = document.getElementById("divPlay");
     var divShow = document.getElementById("divShow");
     divShow.onclick = function () {
-        // alert(1)
         isPlay = !isPlay;
-        document.getElementById("divMain").style.display = "none";//隐藏
-        video.style.display = "block";
-        video.src = './Images/Common/光合作用.mp4';
-        video.controls = false;  //隐藏video底部进度条及按钮
+        showDivGHZY();
         LoopMp4();
     }
     divPaly.onclick = function () {
         isPlay = !isPlay;
-        //  alert(isPlay)
-        //if (isPlay) {
-        //    document.getElementById("spanPlay").innerText = "停止"
-        //    document.getElementById("imgPlay").src = "./Images/Common/end.png"
-
-        document.getElementById("divMain").style.display = "none";//隐藏
-        video.style.display = "block";
-        video.src = './Images/Common/光合作用.mp4';
-        video.controls = false;  //隐藏video底部进度条及按钮
+        showDivGHZY();
         LoopMp4();
-
-
-        //}
-        //else {
-        //    document.getElementById("spanPlay").innerText = "播放"
-        //    document.getElementById("imgPlay").src = "./Images/Common/start.png"
-        //}
     }
     var divEnd = document.getElementById("divEnd");
     divEnd.onclick = function () {
@@ -232,6 +226,7 @@
         document.getElementById("divMain").style.display = "block";//隐藏
         video.style.display = "none";
         video.src = '';
+        closeDemo.click();
     }
 
     var timerCount = 0;  //设置循环几次后自动退出
@@ -252,7 +247,6 @@
                     video.style.display = "none";
                     video.src = '';
                 }
-                //var divLeaf = document.getElementById("divLeaf");
                 video.src = './Images/Common/光合作用.mp4';
             }, timerDate)//设置定时时间
         })
