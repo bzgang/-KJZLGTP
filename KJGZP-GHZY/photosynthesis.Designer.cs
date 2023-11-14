@@ -54,6 +54,7 @@ namespace KJZP_GHZY
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.Size = new System.Drawing.Size(486, 505);
             this.webBrowser1.TabIndex = 1;
+            this.webBrowser1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.webBrowser1_PreviewKeyDown);
             // 
             // btnDecryptKey
             // 
@@ -171,7 +172,6 @@ namespace KJZP_GHZY
             this.MaximizeBox = false;
             this.Name = "photosynthesis";
             this.Text = "光合作用";
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.photosynthesis_KeyPress);
             this.Resize += new System.EventHandler(this.photosynthesis_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();

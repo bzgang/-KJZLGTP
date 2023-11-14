@@ -27,7 +27,7 @@
 <body>
     <div class="page flex-col">
         <video controls autoplay style="display:none; width:100%;height:100%;" id="videoPlay"></video>
-        <div class="block_2 flex-row justify-between" style=" position: fixed; margin: 1680px 0px 0px 950px" id="divEnd">
+        <div class="block_2 flex-row justify-between" style=" position: fixed; margin: 1745px 0px 0px 970px" id="divEnd">
             <!-- winfrom中显示的化配置为margin: -240px 0px 0px 950px -->
             <div class="image-text_3 flex-col justify-between">
                 <img class="image_15"
@@ -39,13 +39,14 @@
         <div class="box_1 flex-col" id="divMain" title="背景">
             <div class="image-wrapper_6 flex-col" title="太阳" id="divSun">
             </div>
-            <img class="image_11"
-                 referrerpolicy="no-referrer"
-                 src="./Images/Common/云2.png" title="云2" id="imgCloud1" />
-            <img class="image_12"
-                 referrerpolicy="no-referrer"
-                 src="./Images/Common/云3.png" title="云3" id="imgCloud2" />
-
+            <div style=" margin: 100px 0 0 -80px;">
+                <img class="image_11"
+                     referrerpolicy="no-referrer"
+                     src="./Images/Common/云2.png" title="云2" id="imgCloud1" />
+                <img class="image_12"
+                     referrerpolicy="no-referrer"
+                     src="./Images/Common/云3.png" title="云3" id="imgCloud2" />
+            </div>
             <div class="section_2 flex-col" title="土壤" id="divTr">
 
 
@@ -59,7 +60,8 @@
                     </div>
                     <div class="section_1 flex-col">
                         <div class="text-wrapper_4 flex-col" id="divLeaf">
-                            <span class="text_4">叶</span>
+                            <img src="./Images/Common/按钮.png" style="width: 260px; height: 120px; margin: -20px 0 0 -30px" />
+                            <span class="text_4"> 叶</span>
                         </div>
                     </div>
                     <div class="section_3 flex-row">
@@ -68,6 +70,7 @@
                              src="./Images/Common/zsd-j.png" />
                         <div class="group_8 flex-col">
                             <div class="text-wrapper_6 flex-col" id="divStem">
+                                <img src="./Images/Common/按钮.png" style="width: 260px; height: 120px; margin: -20px 0 0 -30px " />
                                 <span class="text_6">茎</span>
                             </div>
                         </div>
@@ -75,6 +78,7 @@
                     <div class="group_5 flex-row">
                         <div class="block_1 flex-col">
                             <div class="text-wrapper_5 flex-col" id="divRoot">
+                                <img src="./Images/Common/按钮.png" style="width: 260px; height: 120px; margin: -28px 0 0 -40px " />
                                 <span class="text_5">根</span>
                             </div>
                         </div>
@@ -87,7 +91,7 @@
                 </div>
                 <!--弹出窗体，播放动画-->
                 <div id="divShowDemo" class="group_6 flex-col"
-                     style="background-color: lightgreen; width: 80%; height: 500px; position: absolute; margin: -170px 0 0 100px; border-radius: 50px; border: 8px solid rgba(230, 230, 230, 1); display: none; ">
+                     style="background-color: lightgreen; width: 80%; height: 500px; position: absolute; margin: -280px 0 0 100px; border-radius: 50px; border: 8px solid rgba(230, 230, 230, 1); display: none; ">
                     <video controls autoplay style="width: 100%; height: 100%; border-radius: 50px; display: none;" id="videoPlayDemo"></video>
                     <div style=" position: fixed; margin: -400px 0 0 2px;display:none;" id="divWinfrom"><img class="image_15" id="closeDemoWinfrom" referrerpolicy="no-referrer" style="margin: 460px 0 0 400px;" src="./Images/Common/icon_Shut.png" /></div>
                     <div style=" position: fixed; margin: 0px 0 0 0px; display: none;" id="divClose"><img class="image_15" id="closeDemo" referrerpolicy="no-referrer" style="margin: 90px 0 0 410px;" src="./Images/Common/icon_Shut.png" /></div>
@@ -152,14 +156,18 @@
             document.getElementById("divShowDemo").style.display = "block";//隐藏
             videoDemo.style.display = "block";
             videoDemo.controls = false; //隐藏底部播放进度条及按钮
+            setDivDisable("none");
         }, 150)
-        setDivDisable("none");
+
     }
     //弹出演示视频后，设置按钮不可用，关闭后，回复可点击
     function setDivDisable(disable) {
         divLeaf.style.pointerEvents = disable;
         divStem.style.pointerEvents = disable;
         divRoot.style.pointerEvents = disable;
+        divLeaf.style.display = disable;
+        divStem.style.display = disable;
+        divRoot.style.display = disable;
     }
     divLeaf.onclick = function () { showDiv("Leaf") };//叶
     divStem.onclick = function () { showDiv("Stem") }//茎
@@ -186,7 +194,7 @@
     window.onload = function () {
         var winfromStr = GetQueryString("winfrom");
         if (winfromStr == "true") {
-            document.getElementById("divEnd").style.margin = "-240px 0px 0px 950px";
+            document.getElementById("divEnd").style.margin = "-180px 0px 0px 970px";
             document.getElementById("divClose").style.display = "none";
             document.getElementById("divWinfrom").style.display = "block";
         }

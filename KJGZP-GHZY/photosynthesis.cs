@@ -88,7 +88,6 @@ namespace KJZP_GHZY
                 }
             }
         }
-
         /// <summary>
         /// 获取选择的投屏
         /// </summary>
@@ -266,13 +265,13 @@ namespace KJZP_GHZY
         /// <param name="e"></param>
         private void photosynthesis_Resize(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Minimized)
-            {
-                this.WindowState = FormWindowState.Normal;
-                notifyIcon1.Visible = true;//显示托盘图标
-                this.Hide();//隐藏窗体
-                this.ShowInTaskbar = false;
-            }
+            //if (this.WindowState == FormWindowState.Minimized)
+            //{
+            //    this.WindowState = FormWindowState.Normal;
+            //    notifyIcon1.Visible = true;//显示托盘图标
+            //    this.Hide();//隐藏窗体
+            //    this.ShowInTaskbar = false;
+            //}
         }
 
         /// <summary>
@@ -311,14 +310,16 @@ namespace KJZP_GHZY
             }
         }
 
-        private void photosynthesis_KeyPress(object sender, KeyPressEventArgs e)
+        private void webBrowser1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             if (isRunning)
             {
-                if (e.KeyChar == (char)Keys.Escape)//按下ESC //27
+                if (e.KeyCode == Keys.Escape)//按下ESC //27
                 {
+                    MessageBox.Show("投屏即将结束！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     button1.Text = "开始播放";
-                    StopScreenSharing();
+                    isRunning = !isRunning;
+                    screenForm.Hide();
                     return;
                 }
             }

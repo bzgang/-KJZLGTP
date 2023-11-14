@@ -45,17 +45,17 @@
 .section_1 {
   border-radius: 40px;
   height: 84px;
-  border: 2px solid rgba(255, 150, 0, 1);
+  /* border: 2px solid rgba(255, 150, 0, 1); */
   width: 194px;
-  margin: -40px 0 0 7px;
+  margin: -40px 0 0 20px;
 }
 
 .text-wrapper_4 {
-  background-color: rgba(255, 150, 0, 1);
+  /* background-color: rgba(255, 150, 0, 1); */
   border-radius: 33px;
-  height: 66px;
-  width: 176px;
-  margin: 9px 0 0 9px;
+  height: 70px;
+  width: 180px;
+  margin: 5px 0 0 5px;
 }
 
 .text_4 {
@@ -63,13 +63,13 @@
   height: 40px;
   overflow-wrap: break-word;
   color: rgba(255, 255, 255, 1);
-  font-size: 28px;
+  font-size: 36px;
   font-family: PingFangSC-Regular;
   font-weight: NaN;
   text-align: right;
   white-space: nowrap;
   line-height: 40px;
-  margin: 13px 0 0 74px;
+  margin: -76px 0 0 80px;
 }
 
 .image_13 {
@@ -79,36 +79,36 @@
 }
 
 .section_2 {
-  height: 700px;
+  height: 600px;
   background: url(../Images/Common/tr.png)
     0px -1px no-repeat;
-  background-size: 1082px 820px;
+  /* background-size: 1082px 820px; */
   width: 1081px;
   position: absolute;
   left: 0;
-  top: 1250px;
+  top: 1420px;
 }
 
 .group_5 {
   width: 190px;
   height: 80px;
-  margin: 94px 0 0 63px;
+  margin: 80px 0 0 63px;
 }
 
 .block_1 {
   border-radius: 40px;
   height: 84px;
-  border: 2px solid rgba(255, 150, 0, 1);
+  /* border: 2px solid rgba(255, 150, 0, 1); */
   width: 194px;
-  margin: 30px 0 0 -50px;
+  margin: 0px 0 0 -30px;
 }
 
 .text-wrapper_5 {
-  background-color: rgba(255, 150, 0, 1);
+  /* background-color: rgba(255, 150, 0, 1); */
   border-radius: 33px;
-  height: 66px;
-  width: 176px;
-  margin: 9px 0 0 9px;
+  height: 69px;
+  width: 181px;
+  margin: 5px 0 0 4px;
 }
 
 .text_5 {
@@ -116,19 +116,19 @@
   height: 40px;
   overflow-wrap: break-word;
   color: rgba(255, 255, 255, 1);
-  font-size: 28px;
+  font-size: 36px;
   font-family: PingFangSC-Regular;
   font-weight: NaN;
   text-align: right;
   white-space: nowrap;
   line-height: 40px;
-  margin: 13px 0 0 74px;
+  margin: -78px 0 0 70px;
 }
 
 .group_6 {
   width: 180px;
   height: 165px;  
-  margin: 390px 0 50px 950px;
+  margin: 390px 0 50px 950px; 
 }
 
 .block_2 {
@@ -137,7 +137,8 @@ height: 165px;
 background: rgba(0,0,0,0.5);
 border-radius: 31px;
 backdrop-filter: blur(20px);
-margin-top:40px;
+margin-top:-70px;
+margin-left:20px;
 }
 
 .image-text_3 {
@@ -194,14 +195,14 @@ margin-top:40px;
 }
 
 .group_7 {
-  height: 1250px;
+   height: 860px;  
   background: url(../Images/Common/zw.gif)
     0px -1px no-repeat;
-  background-size: 1050px 1250px;
-  width: 1050px;
+  /* background-size: 1050px 1250px; */
+  width: 960px;
   position: fixed;
-  left: 75px;
-  top: 760px;
+  left: 30px;
+  top: 980px;
 }
 
 .image-wrapper_7 {
@@ -218,7 +219,7 @@ margin-top:40px;
 .image-wrapper_8 {
   width: 120px;
   height: 122px;
-  margin: 100px 0 0 200px;
+  margin: 40px 0 0 230px;
 }
 
 .image_7 {
@@ -241,23 +242,23 @@ margin-top:40px;
 .image_8 {
   width: 190px;
   height: 75px;
-  margin: 1px 0 0 140px;
+  margin: -40px 0 0 150px;
 }
 
 .group_8 {
   border-radius: 40px;
   height: 84px;
-  border: 2px solid rgba(255, 150, 0, 1);
+  /* border: 2px solid rgba(255, 150, 0, 1); */
   width: 194px;
-  margin: -10px -2px 0 3px;
+  margin: -50px 0px 0 0px;
 }
 
 .text-wrapper_6 {
-  background-color: rgba(255, 150, 0, 1);
+  /* background-color: rgba(255, 150, 0, 1); */
   border-radius: 33px;
-  height: 66px;
-  width: 176px;
-  margin: 9px 0 0 9px;
+  height: 70px;
+  width: 179px;
+  margin: 5px 0 0 5px;
 }
 
 .text_6 {
@@ -265,24 +266,24 @@ margin-top:40px;
   height: 40px;
   overflow-wrap: break-word;
   color: rgba(255, 255, 255, 1);
-  font-size: 28px;
+  font-size: 36px;
   font-family: PingFangSC-Regular;
   font-weight: NaN;
   text-align: right;
   white-space: nowrap;
   line-height: 40px;
-  margin: 13px 0 0 74px;
+  margin: -75px 0 0 80px;
 }
 
 .image-wrapper_9 {
   width: 149px;
   height: 76px;
-  margin: -20px 0 0 200px;
+  margin: -50px 0 0 220px;
 }
 
 .image_9 {
-  width: 250px;
-  height: 145px;
+  width: 240px;
+  height: 125px;
 }
 
 .image-wrapper_10 {
