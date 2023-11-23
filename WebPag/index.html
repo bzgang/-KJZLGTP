@@ -27,7 +27,7 @@
 <body>
     <div class="page flex-col">
         <video controls autoplay style="display:none; width:100%;height:100%;" id="videoPlay"></video>
-        <div class="block_2 flex-row justify-between" style=" position: fixed; margin: 1745px 0px 0px 970px" id="divEnd">
+        <div class="block_2 flex-row justify-between" style=" position: fixed; margin: 1715px 0px 0px 950px" id="divEnd">
             <!-- winfrom中显示的化配置为margin: -240px 0px 0px 950px -->
             <div class="image-text_3 flex-col justify-between">
                 <img class="image_15"
@@ -113,21 +113,26 @@
         </div>
     </div>
 </body>
-</html>
-
-
+</html> 
 <script>
+    var Opacity = "false"; //设置透明度
+    function ScreenFormOpacity() {
+        return Opacity;
+    }
     //设置播放演示视频时，显示和隐藏的背景图标  --未使用
     function hideOrShowBgDiv(hideOrShow) {
+        if (hideOrShow == "none") { Opacity = "true"; } else { Opacity = "false"; }
+        ScreenFormOpacity();
+
         document.getElementById("divZw").style.display = hideOrShow;//植物
         document.getElementById("divBf").style.display = hideOrShow;//播放按钮
         document.getElementById("divEnd").style.display = hideOrShow;//停止
-        document.getElementById("divSun").style.display = hideOrShow;//太阳
-        document.getElementById("imgCloud1").style.display = hideOrShow;//云
-        document.getElementById("imgCloud2").style.display = hideOrShow;//云
-        if (hideOrShow == "none") {
+        //document.getElementById("divSun").style.display = hideOrShow;//太阳
+        // document.getElementById("imgCloud1").style.display = hideOrShow;//云
+        // document.getElementById("imgCloud2").style.display = hideOrShow;//云
+        if (hideOrShow == "none") { 
             document.getElementById("divTr").style.backgroundImage = "url('')";//土壤
-            document.getElementById("divMain").style.backgroundImage = "url('')";//主背景
+            document.getElementById("divMain").style.backgroundImage = "url('../Images/Common/bgNull.png')";//主背景
         }
         else {
             document.getElementById("divTr").style.backgroundImage = "url('../Images/Common/tr.png')";//土壤
@@ -141,7 +146,6 @@
     var videoDemo = document.getElementById("videoPlayDemo"); //播放视频控件
     var closeDemo = document.getElementById("closeDemo"); //关闭演示
     var closeDemoWinfrom = document.getElementById("closeDemoWinfrom"); //关闭演示
-
     //延迟显示MP4，根据判断显示不同演示视频
     function showDiv(season) {
         if (season == "Leaf") {
@@ -157,8 +161,27 @@
             videoDemo.style.display = "block";
             videoDemo.controls = false; //隐藏底部播放进度条及按钮
             setDivDisable("none");
-        }, 150)
+            hideOrShowBgDiv("none");
+        }, 150);
+        TimerDemoEnd();
+    }
+    var timerDemo = null //设置定时器
+    var timerDateDemo = 60000;
+    // 开始执行叶片定时器
+    function TimerDemoEnd() {
 
+        setTimeout(function () {
+            //获取视频时长，进行循环播放
+            videoDemo.addEventListener("loadeddata", function () {
+                var duration = videoDemo.duration;
+                timerDateDemo = duration * 1000 + 1500; //获取视频的时长，配置循环播放间隔，确保每次循环能完整播放视频
+                //alert(timerDateDemo)
+                clearInterval(timerDemo) //在每次使用定时器前先清除一下定时器
+                timerDemo = setInterval(function () {
+                    closeDemoWinfrom.click();
+                }, timerDateDemo)//设置定时时间
+            })
+        }, 180);
     }
     //弹出演示视频后，设置按钮不可用，关闭后，回复可点击
     function setDivDisable(disable) {
@@ -178,12 +201,14 @@
         videoDemo.style.display = "none";
         videoDemo.src = '';
         setDivDisable("");
+        hideOrShowBgDiv("block");
     }
     closeDemoWinfrom.onclick = function () {
         document.getElementById("divShowDemo").style.display = "none";//隐藏
         videoDemo.style.display = "none";
         videoDemo.src = '';
         setDivDisable("");
+        hideOrShowBgDiv("block");
     }
     function GetQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -194,7 +219,7 @@
     window.onload = function () {
         var winfromStr = GetQueryString("winfrom");
         if (winfromStr == "true") {
-            document.getElementById("divEnd").style.margin = "-180px 0px 0px 970px";
+            document.getElementById("divEnd").style.margin = "-200px 0px 0px 950px";
             document.getElementById("divClose").style.display = "none";
             document.getElementById("divWinfrom").style.display = "block";
         }
@@ -202,9 +227,7 @@
             document.getElementById("divClose").style.display = "block";
             document.getElementById("divWinfrom").style.display = "none";
         }
-
     }
-
     //延迟显示MP4
     function showDivGHZY() {
         video.src = './Images/Common/光合作用.mp4';

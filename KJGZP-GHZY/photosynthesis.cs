@@ -182,6 +182,7 @@ namespace KJZP_GHZY
                 }
                 if (string.IsNullOrEmpty(StartScreenSharing())) { return; };
                 InitializeImageTimer();
+                //SetScreenFormOpacity();//设置透明度
                 button1.Text = "停止播放";
                 isRunning = true;
                 //this.Hide();//隐藏窗体
@@ -211,6 +212,32 @@ namespace KJZP_GHZY
 
                 MessageBox.Show("输入的密钥无效.", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return "";
+            }
+        }
+        Timer timer2 = new Timer();
+        private void SetScreenFormOpacity()
+        {
+            // 设置定时器，检查key是否有效
+            timer2.Interval = 100; // 单位毫秒
+            timer2.Tick += new EventHandler(ScreenFormOpacityTick);
+            timer2.Start();
+        }
+
+        /// <summary>
+        /// 设置定时播放图片，并配置是否根据周期结束播放
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ScreenFormOpacityTick(object sender, EventArgs e)
+        {
+            object value = webBrowser1.Document.InvokeScript("ScreenFormOpacity", new object[] { "0" });
+            if (value != null && value.ToString() == "true")
+            {
+                screenForm.Opacity = 0.87;
+            }
+            else
+            {
+                screenForm.Opacity = 1;
             }
         }
         private void InitializeImageTimer()
@@ -314,6 +341,7 @@ namespace KJZP_GHZY
         {
             if (isRunning)
             {
+
                 if (e.KeyCode == Keys.Escape)//按下ESC //27
                 {
                     MessageBox.Show("投屏即将结束！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);

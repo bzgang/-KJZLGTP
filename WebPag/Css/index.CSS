@@ -13,6 +13,7 @@
   background: url(../Images/Common/bg.png)
     100% no-repeat;
   background-size: 100% 100%;
+  /* background-color:rgb(70 74 74 / 40%); */
 }
 
 .image-wrapper_6 {
@@ -22,6 +23,8 @@
   background-size: 100% 100%;
   width: 260px;
   margin: 120px 0 0 120px;
+   /* filter:contrast(6);  
+   -webkit-filter:contrast(6); */
 }
 
 .image_10 {
@@ -33,7 +36,7 @@
 .image_11 {
   width: 262px;
   height: 77px;
-  margin: 2px 0 0 711px;
+  margin: 0px 0 0 682px;
 }
 
 .image_12 {
@@ -137,8 +140,8 @@ height: 165px;
 background: rgba(0,0,0,0.5);
 border-radius: 31px;
 backdrop-filter: blur(20px);
-margin-top:-70px;
-margin-left:20px;
+margin-top:-90px;
+margin-left:0px;
 }
 
 .image-text_3 {
