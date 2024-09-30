@@ -135,5 +135,8 @@
     <Content Include="Images\秋\秋12.jpg" />
     <Content Include="Images\秋\秋13.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\XX\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -51,6 +51,10 @@ namespace KJGZP_SJTP
             this.pictureBoxShowSummer = new System.Windows.Forms.PictureBox();
             this.pictureBoxShowAutumn = new System.Windows.Forms.PictureBox();
             this.pictureBoxShowWinter = new System.Windows.Forms.PictureBox();
+            this.lblSpring = new System.Windows.Forms.Label();
+            this.lblSummer = new System.Windows.Forms.Label();
+            this.lblAutumn = new System.Windows.Forms.Label();
+            this.lblWinter = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowSpring)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowSummer)).BeginInit();
@@ -61,7 +65,7 @@ namespace KJGZP_SJTP
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(188, 523);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(132, 22);
             this.numericUpDown1.TabIndex = 11;
@@ -74,10 +78,10 @@ namespace KJGZP_SJTP
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 525);
+            this.label1.Location = new System.Drawing.Point(37, 526);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 17);
+            this.label1.Size = new System.Drawing.Size(142, 16);
             this.label1.TabIndex = 10;
             this.label1.Text = "设置循环时间（秒）";
             // 
@@ -86,16 +90,16 @@ namespace KJGZP_SJTP
             this.screenCKListBox.CheckOnClick = true;
             this.screenCKListBox.FormattingEnabled = true;
             this.screenCKListBox.Location = new System.Drawing.Point(41, 199);
-            this.screenCKListBox.Margin = new System.Windows.Forms.Padding(4);
+            this.screenCKListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.screenCKListBox.Name = "screenCKListBox";
-            this.screenCKListBox.Size = new System.Drawing.Size(404, 157);
+            this.screenCKListBox.Size = new System.Drawing.Size(404, 140);
             this.screenCKListBox.TabIndex = 9;
             this.screenCKListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.screenCKListBox_ItemCheck);
             // 
             // getScreen
             // 
-            this.getScreen.Location = new System.Drawing.Point(345, 163);
-            this.getScreen.Margin = new System.Windows.Forms.Padding(4);
+            this.getScreen.Location = new System.Drawing.Point(345, 162);
+            this.getScreen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.getScreen.Name = "getScreen";
             this.getScreen.Size = new System.Drawing.Size(100, 28);
             this.getScreen.TabIndex = 8;
@@ -106,7 +110,7 @@ namespace KJGZP_SJTP
             // StartStopButton
             // 
             this.StartStopButton.Location = new System.Drawing.Point(345, 519);
-            this.StartStopButton.Margin = new System.Windows.Forms.Padding(4);
+            this.StartStopButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.StartStopButton.Name = "StartStopButton";
             this.StartStopButton.Size = new System.Drawing.Size(100, 28);
             this.StartStopButton.TabIndex = 7;
@@ -117,7 +121,7 @@ namespace KJGZP_SJTP
             // btnScreenSpring
             // 
             this.btnScreenSpring.Location = new System.Drawing.Point(41, 383);
-            this.btnScreenSpring.Margin = new System.Windows.Forms.Padding(4);
+            this.btnScreenSpring.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnScreenSpring.Name = "btnScreenSpring";
             this.btnScreenSpring.Size = new System.Drawing.Size(100, 28);
             this.btnScreenSpring.TabIndex = 7;
@@ -127,8 +131,8 @@ namespace KJGZP_SJTP
             // 
             // btnScreenSummer
             // 
-            this.btnScreenSummer.Location = new System.Drawing.Point(265, 383);
-            this.btnScreenSummer.Margin = new System.Windows.Forms.Padding(4);
+            this.btnScreenSummer.Location = new System.Drawing.Point(285, 383);
+            this.btnScreenSummer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnScreenSummer.Name = "btnScreenSummer";
             this.btnScreenSummer.Size = new System.Drawing.Size(100, 28);
             this.btnScreenSummer.TabIndex = 7;
@@ -139,7 +143,7 @@ namespace KJGZP_SJTP
             // btnScreenAutumn
             // 
             this.btnScreenAutumn.Location = new System.Drawing.Point(41, 454);
-            this.btnScreenAutumn.Margin = new System.Windows.Forms.Padding(4);
+            this.btnScreenAutumn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnScreenAutumn.Name = "btnScreenAutumn";
             this.btnScreenAutumn.Size = new System.Drawing.Size(100, 28);
             this.btnScreenAutumn.TabIndex = 7;
@@ -149,8 +153,8 @@ namespace KJGZP_SJTP
             // 
             // btnScreenWinter
             // 
-            this.btnScreenWinter.Location = new System.Drawing.Point(265, 454);
-            this.btnScreenWinter.Margin = new System.Windows.Forms.Padding(4);
+            this.btnScreenWinter.Location = new System.Drawing.Point(285, 454);
+            this.btnScreenWinter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnScreenWinter.Name = "btnScreenWinter";
             this.btnScreenWinter.Size = new System.Drawing.Size(100, 28);
             this.btnScreenWinter.TabIndex = 7;
@@ -160,7 +164,7 @@ namespace KJGZP_SJTP
             // 
             // textBoxKey
             // 
-            this.textBoxKey.Location = new System.Drawing.Point(150, 25);
+            this.textBoxKey.Location = new System.Drawing.Point(149, 25);
             this.textBoxKey.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxKey.Multiline = true;
             this.textBoxKey.Name = "textBoxKey";
@@ -172,7 +176,7 @@ namespace KJGZP_SJTP
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(43, 37);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 17);
+            this.label4.Size = new System.Drawing.Size(82, 16);
             this.label4.TabIndex = 12;
             this.label4.Text = "有效密钥：";
             // 
@@ -182,7 +186,7 @@ namespace KJGZP_SJTP
             this.lblDecryptVal.ForeColor = System.Drawing.Color.Red;
             this.lblDecryptVal.Location = new System.Drawing.Point(159, 133);
             this.lblDecryptVal.Name = "lblDecryptVal";
-            this.lblDecryptVal.Size = new System.Drawing.Size(18, 17);
+            this.lblDecryptVal.Size = new System.Drawing.Size(15, 16);
             this.lblDecryptVal.TabIndex = 15;
             this.lblDecryptVal.Text = "--";
             // 
@@ -191,13 +195,13 @@ namespace KJGZP_SJTP
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(43, 133);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 17);
+            this.label2.Size = new System.Drawing.Size(112, 16);
             this.label2.TabIndex = 14;
             this.label2.Text = "密钥到期时间：";
             // 
             // btnDecryptKey
             // 
-            this.btnDecryptKey.Location = new System.Drawing.Point(41, 88);
+            this.btnDecryptKey.Location = new System.Drawing.Point(41, 89);
             this.btnDecryptKey.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDecryptKey.Name = "btnDecryptKey";
             this.btnDecryptKey.Size = new System.Drawing.Size(139, 27);
@@ -211,13 +215,14 @@ namespace KJGZP_SJTP
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(43, 169);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 17);
+            this.label3.Size = new System.Drawing.Size(82, 16);
             this.label3.TabIndex = 17;
             this.label3.Text = "投屏屏幕：";
             // 
             // pictureBoxShowSpring
             // 
-            this.pictureBoxShowSpring.Location = new System.Drawing.Point(148, 363);
+            this.pictureBoxShowSpring.Location = new System.Drawing.Point(162, 363);
+            this.pictureBoxShowSpring.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxShowSpring.Name = "pictureBoxShowSpring";
             this.pictureBoxShowSpring.Size = new System.Drawing.Size(108, 66);
             this.pictureBoxShowSpring.TabIndex = 18;
@@ -225,7 +230,8 @@ namespace KJGZP_SJTP
             // 
             // pictureBoxShowSummer
             // 
-            this.pictureBoxShowSummer.Location = new System.Drawing.Point(372, 363);
+            this.pictureBoxShowSummer.Location = new System.Drawing.Point(402, 363);
+            this.pictureBoxShowSummer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxShowSummer.Name = "pictureBoxShowSummer";
             this.pictureBoxShowSummer.Size = new System.Drawing.Size(108, 66);
             this.pictureBoxShowSummer.TabIndex = 18;
@@ -233,7 +239,8 @@ namespace KJGZP_SJTP
             // 
             // pictureBoxShowAutumn
             // 
-            this.pictureBoxShowAutumn.Location = new System.Drawing.Point(148, 435);
+            this.pictureBoxShowAutumn.Location = new System.Drawing.Point(162, 434);
+            this.pictureBoxShowAutumn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxShowAutumn.Name = "pictureBoxShowAutumn";
             this.pictureBoxShowAutumn.Size = new System.Drawing.Size(108, 66);
             this.pictureBoxShowAutumn.TabIndex = 18;
@@ -241,17 +248,58 @@ namespace KJGZP_SJTP
             // 
             // pictureBoxShowWinter
             // 
-            this.pictureBoxShowWinter.Location = new System.Drawing.Point(372, 435);
+            this.pictureBoxShowWinter.Location = new System.Drawing.Point(402, 434);
+            this.pictureBoxShowWinter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxShowWinter.Name = "pictureBoxShowWinter";
             this.pictureBoxShowWinter.Size = new System.Drawing.Size(108, 66);
             this.pictureBoxShowWinter.TabIndex = 18;
             this.pictureBoxShowWinter.TabStop = false;
+            // 
+            // lblSpring
+            // 
+            this.lblSpring.AutoSize = true;
+            this.lblSpring.Location = new System.Drawing.Point(40, 414);
+            this.lblSpring.Name = "lblSpring";
+            this.lblSpring.Size = new System.Drawing.Size(15, 16);
+            this.lblSpring.TabIndex = 19;
+            this.lblSpring.Text = "--";
+            // 
+            // lblSummer
+            // 
+            this.lblSummer.AutoSize = true;
+            this.lblSummer.Location = new System.Drawing.Point(284, 413);
+            this.lblSummer.Name = "lblSummer";
+            this.lblSummer.Size = new System.Drawing.Size(15, 16);
+            this.lblSummer.TabIndex = 20;
+            this.lblSummer.Text = "--";
+            // 
+            // lblAutumn
+            // 
+            this.lblAutumn.AutoSize = true;
+            this.lblAutumn.Location = new System.Drawing.Point(42, 485);
+            this.lblAutumn.Name = "lblAutumn";
+            this.lblAutumn.Size = new System.Drawing.Size(15, 16);
+            this.lblAutumn.TabIndex = 19;
+            this.lblAutumn.Text = "--";
+            // 
+            // lblWinter
+            // 
+            this.lblWinter.AutoSize = true;
+            this.lblWinter.Location = new System.Drawing.Point(286, 485);
+            this.lblWinter.Name = "lblWinter";
+            this.lblWinter.Size = new System.Drawing.Size(15, 16);
+            this.lblWinter.TabIndex = 20;
+            this.lblWinter.Text = "--";
             // 
             // StartScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(604, 623);
+            this.Controls.Add(this.lblWinter);
+            this.Controls.Add(this.lblSummer);
+            this.Controls.Add(this.lblAutumn);
+            this.Controls.Add(this.lblSpring);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnDecryptKey);
             this.Controls.Add(this.lblDecryptVal);
@@ -272,6 +320,7 @@ namespace KJGZP_SJTP
             this.Controls.Add(this.pictureBoxShowSummer);
             this.Controls.Add(this.pictureBoxShowSpring);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "StartScreen";
             this.Text = "四季图片投屏";
@@ -307,6 +356,10 @@ namespace KJGZP_SJTP
         private System.Windows.Forms.PictureBox pictureBoxShowSummer;
         private System.Windows.Forms.PictureBox pictureBoxShowAutumn;
         private System.Windows.Forms.PictureBox pictureBoxShowWinter;
+        private System.Windows.Forms.Label lblSpring;
+        private System.Windows.Forms.Label lblSummer;
+        private System.Windows.Forms.Label lblAutumn;
+        private System.Windows.Forms.Label lblWinter;
     }
 }
 

@@ -14,6 +14,14 @@ namespace KJGZP_SJTP
     public partial class StartScreen : Form
     {
         string keyString = ConfigurationManager.AppSettings["keyString"];
+
+        string selectedSpringScreen = ConfigurationManager.AppSettings["selectedSpringScreen"];
+        string selectedSummerScreen = ConfigurationManager.AppSettings["selectedSummerScreen"];
+        string selectedAutumnScreen = ConfigurationManager.AppSettings["selectedAutumnScreen"];
+        string selectedWinterScreen = ConfigurationManager.AppSettings["selectedWinterScreen"];
+
+        string timerSetting = ConfigurationManager.AppSettings["timerSetting"];
+
         private Image imageToDisplay;//当前投屏图片
         private bool isRunning = false;//投屏状态 
         public int lookUpcount = 0;//获取四季图片文件夹中最少图片量循环
@@ -30,13 +38,35 @@ namespace KJGZP_SJTP
         CryptKeyHelper cryptHelper = new CryptKeyHelper();
         public StartScreen()
         {
+
             InitializeComponent();
             GetScreen();
             textBoxKey.Text = keyString;
+
             //LoadImages("春", pictureBoxSpring);
             //LoadImages("夏", pictureBoxSummer);
             //LoadImages("秋", pictureBoxAutumn);
             //LoadImages("冬", pictureBoxWinter);
+
+            //初始化，如果配置信息为空，则展示操作页面，不进行直接投屏操作
+            if (keyString == "" || selectedSpringScreen == "" || selectedSummerScreen == ""
+                || selectedAutumnScreen == "" || selectedWinterScreen == "" || timerSetting == "")
+            {
+                return;
+            }
+
+            try
+            {
+                validKey = CheckValidKey();
+                if (string.IsNullOrEmpty(validKey)) { return; }
+                GetLastScreenConfig();//启动投屏
+                this.WindowState = FormWindowState.Minimized;// 设置最小化
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
         private void btnDecryptKey_Click(object sender, EventArgs e)
         {
@@ -72,6 +102,13 @@ namespace KJGZP_SJTP
 
             // 修改配置
             appSettings.Settings["keyString"].Value = textBoxKey.Text;
+
+            appSettings.Settings["selectedSpringScreen"].Value = springScreens != null ? springScreens[0].DeviceName : selectedSpringScreen;
+            appSettings.Settings["selectedSummerScreen"].Value = summerScreens != null ? summerScreens[0].DeviceName : selectedSummerScreen;
+            appSettings.Settings["selectedAutumnScreen"].Value = autumnScreens != null ? autumnScreens[0].DeviceName : selectedAutumnScreen;
+            appSettings.Settings["selectedWinterScreen"].Value = winterScreens != null ? winterScreens[0].DeviceName : selectedWinterScreen;
+
+            appSettings.Settings["timerSetting"].Value = (numericUpDown1.Value <= 0 ? 1 : numericUpDown1.Value).ToString();
 
             // 保存配置
             config.Save(ConfigurationSaveMode.Modified);
@@ -125,6 +162,10 @@ namespace KJGZP_SJTP
         bool summerShow = false;
         bool autumnShow = false;
         bool winterShow = false;
+        Screen[] springScreens;
+        Screen[] summerScreens;
+        Screen[] autumnScreens;
+        Screen[] winterScreens;
         /// <summary>
         /// 投屏春天
         /// </summary>
@@ -132,8 +173,20 @@ namespace KJGZP_SJTP
         /// <param name="e"></param>
         private void btnScreenSpring_Click(object sender, EventArgs e)
         {
+            springScreens = null;
+            springScreens = GetSelectedScreens();
+            if (springScreens.ToList<Screen>().Count == 0)
+            {
+                LoadImages("XX", pictureBoxSpring);
+                pictureBoxShowSpring.Image = null;
+                lblSpring.Text = "--";
+                springShow = false;
+                MessageBox.Show("请选择投屏屏幕", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             LoadImages("春", pictureBoxSpring);
             SetPictureBoxShow("春", pictureBoxShowSpring);
+            lblSpring.Text = springScreens[0].DeviceName.Replace("\\.", "");
             springShow = true;
         }
         /// <summary>
@@ -143,8 +196,20 @@ namespace KJGZP_SJTP
         /// <param name="e"></param>
         private void btnScreenSummer_Click(object sender, EventArgs e)
         {
+            summerScreens = null;
+            summerScreens = GetSelectedScreens();
+            if (summerScreens.ToList<Screen>().Count == 0)
+            {
+                LoadImages("XX", pictureBoxSummer);
+                pictureBoxShowSummer.Image = null;
+                lblSummer.Text = "--";
+                summerShow = false;
+                MessageBox.Show("请选择投屏屏幕", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             LoadImages("夏", pictureBoxSummer);
             SetPictureBoxShow("夏", pictureBoxShowSummer);
+            lblSummer.Text = summerScreens[0].DeviceName.Replace("\\.", "");
             summerShow = true;
         }
         /// <summary>
@@ -154,8 +219,20 @@ namespace KJGZP_SJTP
         /// <param name="e"></param>
         private void btnScreenAutumn_Click(object sender, EventArgs e)
         {
+            autumnScreens = null;
+            autumnScreens = GetSelectedScreens();
+            if (autumnScreens.ToList<Screen>().Count == 0)
+            {
+                LoadImages("XX", pictureBoxAutumn);
+                pictureBoxShowAutumn.Image = null;
+                lblAutumn.Text = "--";
+                autumnShow = false;
+                MessageBox.Show("请选择投屏屏幕", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             LoadImages("秋", pictureBoxAutumn);
             SetPictureBoxShow("秋", pictureBoxShowAutumn);
+            lblAutumn.Text = autumnScreens[0].DeviceName.Replace("\\.", "");
             autumnShow = true;
         }
         /// <summary>
@@ -165,20 +242,129 @@ namespace KJGZP_SJTP
         /// <param name="e"></param>
         private void btnScreenWinter_Click(object sender, EventArgs e)
         {
+            winterScreens = null;
+            winterScreens = GetSelectedScreens();
+            if (winterScreens.ToList<Screen>().Count == 0)
+            {
+                LoadImages("XX", pictureBoxWinter);
+                pictureBoxShowWinter.Image = null;
+                lblWinter.Text = "--";
+                winterShow = false;
+                MessageBox.Show("请选择投屏屏幕", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             LoadImages("冬", pictureBoxWinter);
             SetPictureBoxShow("冬", pictureBoxShowWinter);
+            lblWinter.Text = winterScreens[0].DeviceName.Replace("\\.", "");
             winterShow = true;
+        }
+
+        public void GetLastScreenConfig()
+        {
+            numericUpDown1.Value = Convert.ToInt32(timerSetting == "" ? "1" : timerSetting);
+
+            #region 获取历史投屏设置，准备投屏信息
+            springScreens = GetSelectedScreens("春");
+            if (springScreens == null || springScreens.Length <= 0)
+            {
+                throw new Exception("获取上次投屏配置失败，请重新");
+            }
+            LoadImages("春", pictureBoxSpring);
+            SetPictureBoxShow("春", pictureBoxShowSpring);
+            lblSpring.Text = springScreens[0].DeviceName.Replace("\\.", "");
+            springShow = true;
+            //------------
+            summerScreens = GetSelectedScreens("夏");
+            if (summerScreens == null || summerScreens.Length <= 0)
+            {
+                throw new Exception("获取上次投屏配置失败，请重新");
+            }
+            LoadImages("夏", pictureBoxSummer);
+            SetPictureBoxShow("夏", pictureBoxShowSummer);
+            lblSummer.Text = summerScreens[0].DeviceName.Replace("\\.", "");
+            summerShow = true;
+            //------------
+            autumnScreens = GetSelectedScreens("秋");
+            if (autumnScreens == null || autumnScreens.Length <= 0)
+            {
+                throw new Exception("获取上次投屏配置失败，请重新");
+            }
+            LoadImages("秋", pictureBoxAutumn);
+            SetPictureBoxShow("秋", pictureBoxShowAutumn);
+            lblAutumn.Text = autumnScreens[0].DeviceName.Replace("\\.", "");
+            autumnShow = true;
+            //------------
+            winterScreens = GetSelectedScreens("冬");
+            if (winterScreens == null || winterScreens.Length <= 0)
+            {
+                throw new Exception("获取上次投屏配置失败，请重新");
+            }
+            LoadImages("冬", pictureBoxWinter);
+            SetPictureBoxShow("冬", pictureBoxShowWinter);
+            lblWinter.Text = winterScreens[0].DeviceName.Replace("\\.", "");
+            winterShow = true;
+            #endregion
+            //-------------
+            //--开始投屏
+            if (springShow && summerShow && autumnShow && winterShow)
+            {
+                validKey = CheckValidKey();
+                if (string.IsNullOrEmpty(validKey)) { return; }
+                if (string.IsNullOrEmpty(WhitchSeasonToScreen("春", pictureBoxSpring, springScreens))) { return; };
+                if (string.IsNullOrEmpty(WhitchSeasonToScreen("夏", pictureBoxSummer, summerScreens))) { return; };
+                if (string.IsNullOrEmpty(WhitchSeasonToScreen("秋", pictureBoxAutumn, autumnScreens))) { return; };
+                if (string.IsNullOrEmpty(WhitchSeasonToScreen("冬", pictureBoxWinter, winterScreens))) { return; };
+                StartStopButton.Text = "停止投屏";
+                isRunning = true;
+                InitializeImageTimer();
+            }
+        }
+        /// <summary>
+        /// 根据保存的上次投屏数据，获取选择的投屏
+        /// </summary>
+        /// <returns></returns>
+        private Screen[] GetSelectedScreens(string season)
+        {
+            List<Screen> selectedScreens = new List<Screen>();
+            // 在界面中选择要投屏的屏幕 
+            Screen[] screens = Screen.AllScreens; //所有屏幕，判断选择的投屏
+            for (int i = 0; i < screenCKListBox.Items.Count; i++)
+            {
+                //if (screenCKListBox.GetItemChecked(i))
+                //{
+                foreach (Screen screen in screens)
+                {
+                    if (screen.DeviceName == selectedSpringScreen && season == "春")
+                    {
+                        selectedScreens.Add(screen);
+                    }
+                    else if (screen.DeviceName == selectedSummerScreen && season == "夏")
+                    {
+                        selectedScreens.Add(screen);
+                    }
+                    else if (screen.DeviceName == selectedAutumnScreen && season == "秋")
+                    {
+                        selectedScreens.Add(screen);
+                    }
+                    else if (screen.DeviceName == selectedWinterScreen && season == "冬")
+                    {
+                        selectedScreens.Add(screen);
+                    }
+                    //  }
+                }
+            }
+            return selectedScreens.ToArray();
         }
         /// <summary>
         /// 选择投屏屏幕，并设置图片
         /// </summary>
         /// <param name="season"></param>
         /// <param name="pictureBox"></param>
-        private string WhitchSeasonToScreen(string season, PictureBox pictureBox)
+        private string WhitchSeasonToScreen(string season, PictureBox pictureBox, Screen[] GetSelectedScreens)
         {
             validKey = CheckValidKey();
             if (string.IsNullOrEmpty(validKey)) { return ""; }
-            Screen[] selectedScreens = GetSelectedScreens();
+            Screen[] selectedScreens = GetSelectedScreens;// GetSelectedScreens();
             if (selectedScreens.Count() <= 0)
             {
                 MessageBox.Show("请选择投屏屏幕", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -254,7 +440,6 @@ namespace KJGZP_SJTP
                             selectedScreens.Add(screen);
                         }
                     }
-
                 }
             }
             return selectedScreens.ToArray();
@@ -375,10 +560,10 @@ namespace KJGZP_SJTP
                 {
                     validKey = CheckValidKey();
                     if (string.IsNullOrEmpty(validKey)) { return; }
-                    if (string.IsNullOrEmpty(WhitchSeasonToScreen("春", pictureBoxSpring))) { return; };
-                    if (string.IsNullOrEmpty(WhitchSeasonToScreen("夏", pictureBoxSummer))) { return; };
-                    if (string.IsNullOrEmpty(WhitchSeasonToScreen("秋", pictureBoxAutumn))) { return; };
-                    if (string.IsNullOrEmpty(WhitchSeasonToScreen("冬", pictureBoxWinter))) { return; };
+                    if (string.IsNullOrEmpty(WhitchSeasonToScreen("春", pictureBoxSpring, springScreens))) { return; };
+                    if (string.IsNullOrEmpty(WhitchSeasonToScreen("夏", pictureBoxSummer, summerScreens))) { return; };
+                    if (string.IsNullOrEmpty(WhitchSeasonToScreen("秋", pictureBoxAutumn, autumnScreens))) { return; };
+                    if (string.IsNullOrEmpty(WhitchSeasonToScreen("冬", pictureBoxWinter, winterScreens))) { return; };
                     StartStopButton.Text = "停止投屏";
                     isRunning = true;
                     InitializeImageTimer();
