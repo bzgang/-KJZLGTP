@@ -17,6 +17,7 @@ namespace KJZP_GHZY
         CryptKeyHelper cryptHelper = new CryptKeyHelper();
         private bool isRunning = false;//投屏状态 
         string keyString = ConfigurationManager.AppSettings["keyString"];
+        string selectedScreen = ConfigurationManager.AppSettings["selectedScreen"];
         public photosynthesis()
         {
             WebBrowserUtil.SetWebBrowserFeatures(11);
@@ -33,17 +34,47 @@ namespace KJZP_GHZY
             }
             LoadScreenList();
             textBoxKey.Text = keyString;
+
+            //初始化，如果配置信息为空，则展示操作页面，不进行直接投屏操作
+            if (keyString == "" || selectedScreen == "")
+            {
+                return;
+            }
+            try
+            {
+                validKey = CheckValidKey();
+                if (string.IsNullOrEmpty(validKey)) { return; }
+
+                //System.Threading.Thread.Sleep(3000);
+                ExecStartScreen(); //启动投屏
+                this.WindowState = FormWindowState.Minimized; // 设置最小化
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             //StartScreenSharing();
+
         }
 
         public void LoadScreenList()
         {
             screenCKListBox.Items.Clear();
             Screen[] screens = Screen.AllScreens;
+            int i = 0;
             foreach (Screen screen in screens)
             {
                 // 在界面中列出可用的屏幕，让用户选择
                 screenCKListBox.Items.Add(screen.DeviceName);
+                if (selectedScreen == "")
+                {
+                    screenCKListBox.SetItemChecked(0, true);
+                }
+                else if (screen.DeviceName == selectedScreen)
+                {
+                    screenCKListBox.SetItemChecked(i, true);
+                }
+                i++;
             }
         }
         // 将图片显示在指定屏幕上
@@ -55,7 +86,9 @@ namespace KJZP_GHZY
             Screen[] selectedScreens = GetSelectedScreens();
             if (selectedScreens.Count() <= 0)
             {
+                webBrowser1.Navigate("");
                 MessageBox.Show("请选择投屏屏幕", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                 return "";
             }
             foreach (Screen screen in selectedScreens)
@@ -103,7 +136,7 @@ namespace KJZP_GHZY
                 {
                     foreach (Screen screen in screens)
                     {
-                        if (screen.DeviceName == screenCKListBox.Items[i])
+                        if (screen.DeviceName == screenCKListBox.Items[i] || screen.DeviceName == selectedScreen)
                         {
                             selectedScreens.Add(screen);
                         }
@@ -147,6 +180,7 @@ namespace KJZP_GHZY
             // 修改配置
             appSettings.Settings["keyString"].Value = textBoxKey.Text;
 
+            appSettings.Settings["selectedScreen"].Value = GetSelectedScreens().Length > 0 ? GetSelectedScreens()[0].DeviceName : selectedScreen;
             // 保存配置
             config.Save(ConfigurationSaveMode.Modified);
         }
@@ -161,33 +195,37 @@ namespace KJZP_GHZY
             }
             else
             {
-
-                validKey = CheckValidKey();
-                if (string.IsNullOrEmpty(validKey)) { return; }
-                string webBrowserUrl = ConfigurationManager.ConnectionStrings["webBrowserUrl"].ConnectionString; //txtUrl.Text;// "";
-
-                if (string.IsNullOrEmpty(webBrowserUrl))
-                {
-                    MessageBox.Show("请检查播放动画地址配置.", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                try
-                {
-                    webBrowser1.Navigate(webBrowserUrl + "?winfrom=true");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("播放动画地址错误,请检查.", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                if (string.IsNullOrEmpty(StartScreenSharing())) { return; };
-                InitializeImageTimer();
-                //SetScreenFormOpacity();//设置透明度
-                button1.Text = "停止播放";
-                isRunning = true;
-                //this.Hide();//隐藏窗体
+                ExecStartScreen();
             }
 
+        }
+
+        public void ExecStartScreen()
+        {
+            validKey = CheckValidKey();
+            if (string.IsNullOrEmpty(validKey)) { return; }
+            string webBrowserUrl = ConfigurationManager.ConnectionStrings["webBrowserUrl"].ConnectionString; //txtUrl.Text;// "";
+
+            if (string.IsNullOrEmpty(webBrowserUrl))
+            {
+                MessageBox.Show("请检查播放动画地址配置.", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            try
+            {
+                webBrowser1.Navigate(webBrowserUrl + "?winfrom=true");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("播放动画地址错误,请检查.", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrEmpty(StartScreenSharing())) { return; };
+            InitializeImageTimer();
+            //SetScreenFormOpacity();//设置透明度
+            button1.Text = "停止播放";
+            isRunning = true;
+            //this.Hide();//隐藏窗体
         }
         private string CheckValidKey()
         {
